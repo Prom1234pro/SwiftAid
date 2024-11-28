@@ -1,0 +1,74 @@
+
+  .get-started-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    width: 100vw;
+    max-width: 400px;
+    text-align: center;
+  }
+  
+  .illustration-container {
+    margin-bottom: 20px;
+  }
+  
+ .get-started-screen h2 {
+    font-size: 26px;
+    width: 200px;
+    font-weight: bold;
+    color: #000;
+    margin-bottom: 20px;
+  }
+  
+  .auth-buttons {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .auth-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 5px 0;
+    border-radius: 25px;
+    border: 1px solid rgb(148, 148, 148);
+    cursor: pointer;
+    gap: 5px;
+    background-color: #fff;
+    color: #000;
+  }
+  
+  .password {
+    background-color: #a6ce39;
+    color: #fff;
+    width: 100%;
+    margin-top: 10px;
+  }
+  
+  .or-divider {
+    margin: 20px 0;
+    font-size: 14px;
+    color: #888;
+  }
+  
+  .signup-link {
+    font-size: 14px;
+    color: #888;
+    margin-top: 20px;
+  }
+  
+  .signup-link a {
+    color: #a6ce39;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .signup-link a:hover {
+    text-decoration: underline;
+  }
+  

@@ -1,0 +1,57 @@
+  .splash-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    color: #fff;
+  }
+  .first-splash {
+    background-color: #a6ce39;
+  }
+  .second-splash {
+    background-color: white;
+  }
+  .first-splash, .second-splash {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  
+  .logo-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-45%, -50%);
+  }
+  .logo {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .loader {
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 24px;
+    height: 24px;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  /* Optional styling for the second splash screen */
+  .second-splash p {
+    font-size: 16px;
+    color: #fff;
+  }
+  

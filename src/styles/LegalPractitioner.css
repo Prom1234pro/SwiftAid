@@ -1,0 +1,149 @@
+.legal-practitioner-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    min-height: 100vh;
+  }
+  
+  .header {
+    padding: 16px;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  
+  .header-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+  
+  .back-button {
+    color: #4b5563;
+  }
+  
+  .header-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+  
+  .header-subtitle {
+    font-size: 0.875rem;
+    color: #6b7280;
+  }
+  
+  .search-bar {
+    padding: 16px;
+  }
+  
+  .search-wrapper {
+    position: relative;
+  }
+  
+  .search-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9ca3af;
+  }
+  
+  .search-input {
+    width: 100%;
+    padding: 10px 12px 10px 36px;
+    background-color: #f3f4f6;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+  }
+  
+  .practitioners-list {
+    padding: 16px;
+  }
+  
+  .practitioner-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    cursor: pointer;
+  }
+  
+  .practitioner-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .image-container {
+    position: relative;
+  }
+  
+  .profile-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+  
+  .status-indicator {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: 2px solid #ffffff;
+  }
+  
+  .status-indicator.online {
+    background-color: #10b981;
+  }
+  
+  .status-indicator.offline {
+    background-color: #9ca3af;
+  }
+  
+  .practitioner-name {
+    font-weight: 500;
+  }
+  
+  .practitioner-company {
+    font-size: 0.875rem;
+    color: #6b7280;
+  }
+  
+  .status-button {
+    padding: 8px 16px;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    background-color: #f3f4f6;
+    color: #4b5563;
+    border: none;
+  }
+  
+  .status-button.selected {
+    background-color: #9DC45F;
+    color: #ffffff;
+  }
+  
+  .continue-button-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 16px;
+    background-color: #ffffff;
+    border-top: 1px solid #e5e7eb;
+  }
+  
+  .continue-button {
+    width: 100%;
+    padding: 12px;
+    background-color: #9DC45F;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 1rem;
+  }
+  
