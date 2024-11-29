@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { doc, updateDoc } from "firebase/firestore";
 import { firestore } from "../firebase";
-import search from "../assets/search.png";
+import search from "../assets/searches.png";
 import albania from "../assets/albania.png";
 import algeria from "../assets/algeria.png";
 import andorra from "../assets/andorra.png";
