@@ -1,18 +1,28 @@
-import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Button from "../components/Button";
-import "../styles/SelectCountry.css";
+import arrowBack from "../assets/arrowBack.png";
+import "../styles/LayoutContainer.css";
 
-function LayoutContainer({headingText, children}) {
-  
+// eslint-disable-next-line react/prop-types
+function LayoutContainer({ headingText, children, rightComponent }) {
+  const navigate = useNavigate();
+
+  const handleBackClick = () => {
+    navigate(-1);
+  };
+
   return (
     <div className="layout-container">
-      <button className="back-button">←</button>
-      <h1>{headingText}</h1>
-      <>
-      {children}
-      </>
+      <div className="heading">
+        <div onClick={handleBackClick} className="back-button" style={{ cursor: "pointer" }}>
+          <img src={arrowBack} alt="arrowBack" />
+        </div>
+        <div className="heading-text">{headingText}</div>
+        <div className="right-component">
+          {rightComponent}
+        </div>
       </div>
+      {children}
+    </div>
   );
 }
 

@@ -1,0 +1,34 @@
+.layout-container {
+    height: 100vh;
+    width: 95vw;
+    max-width: 500px;
+    margin-top: 70px;
+    margin-bottom: 58px;
+}
+
+.heading {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    margin-bottom: 2em;
+}
+
+.heading img {
+    font-weight: bold;
+    font-size: 28px;
+    width: 32px;
+    height: 25px;
+    margin-top: 5px;
+}
+
+.heading .heading-text {
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.heading .right-component {
+    display: flex;
+    justify-self: flex-end;
+    margin-left: auto;
+    gap: 15px;
+}

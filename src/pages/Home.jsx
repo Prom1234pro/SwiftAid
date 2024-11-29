@@ -1,15 +1,21 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { Search, Home, Plus, Clock, User, Grid, Film, LayoutGrid } from "lucide-react";
+import plus from "../assets/plus.png";
+import circle from "../assets/circle.png";
+import picture1 from "../assets/picture1.png";
+import picture2 from "../assets/picture2.png";
+import edit from "../assets/pen-edit.png";
+import bigPlus from "../assets/big-plus.png";
 import "../styles/Home.css";
+import LayoutContainer from "../components/LayoutContainer";
 
-const ProfileUI = () => {
+const HomePage = () => {
   const navigate = useNavigate();
   const [profileImage, setProfileImage] = useState("/api/placeholder/96/96"); // Default image
   
   useEffect(() => {
     // Retrieve the image from localStorage
-    const storedImage = localStorage.getItem("profileImage");
+    const storedImage = localStorage.getItem("avatarUrl");
     if (storedImage) {
       setProfileImage(storedImage);
     }
@@ -32,42 +38,34 @@ const ProfileUI = () => {
   ];
 
   const quickActions = [
-    { icon: <Plus className="icon" />, label: "Add" },
-    { icon: "🏥", label: "Hospital" },
-    { icon: "🌙", label: "Night" },
-    { icon: "👥", label: "Friends" },
-    { icon: "📱", label: "Nav" },
+    { icon: bigPlus, label: "Add" },
+    { icon: picture1, label: "Hospital" },
+    { icon: picture2, label: "Night" },
+    { icon: picture1, label: "Friends" },
+    { icon: picture2, label: "Nature" },
   ];
 
   const tabItems = [
-    { icon: <Grid className="icon" />, label: "Feeds", active: true },
-    { icon: <Film className="icon" />, label: "Shorts", active: false },
-    { icon: <LayoutGrid className="icon" />, label: "Tab View", active: false },
+    { icon: bigPlus, label: "Feeds", active: true },
+    { icon: bigPlus, label: "Shorts", active: false },
+    { icon: bigPlus, label: "Tab View", active: false },
   ];
 
   return (
-    <div className="profile-container">
+    <LayoutContainer headingText={"Favour E."} rightComponent={
+      <><img src={plus} alt="plus" />
+          <img src={edit} alt="edit" />
+          <img src={circle} alt="circle" /></>
+      }>
+
       {/* Header */}
       <div className="profile-header">
-        <div className="profile-header-top">
-          <h1 className="profile-name">Favour E.</h1>
-          <div className="header-actions">
-            <button className="icon-button">
-              <Clock className="icon" />
-            </button>
-            <button className="icon-button">
-              <Search className="icon" />
-            </button>
-            <button className="icon-button">⋮</button>
-          </div>
-        </div>
-
-        {/* Profile Info */}
         <div className="profile-info">
           <div className="profile-avatar">
             <img src={profileImage} alt="Profile" className="avatar-image" />
           </div>
           <h2 className="profile-subtitle">Favour E.</h2>
+          
           <p className="profile-role">Change Maker</p>
           <a href="#" className="profile-link">www.web1.com</a>
         </div>
@@ -101,14 +99,14 @@ const ProfileUI = () => {
             <button
               onClick={() => handleFindLocationClick("Find a nearby Hospital")}
               className="link-button"
-            >
+              >
               Find a nearby Hospital
             </button>
             <span className="separator">|</span>
             <button
               onClick={() => handleFindLocationClick("Police Station")}
               className="link-button"
-            >
+              >
               Police Station
             </button>
           </div>
@@ -120,7 +118,8 @@ const ProfileUI = () => {
             <div key={index} className="quick-action-item">
               <div className="quick-action-icon">
                 {typeof action.icon === "string" ? (
-                  <span className="emoji">{action.icon}</span>
+                  <img src={action.icon} alt={action.icon}/>
+                  // <span className="emoji">{action.icon}</span>
                 ) : (
                   action.icon
                 )}
@@ -134,10 +133,11 @@ const ProfileUI = () => {
         <div className="tab-navigation">
           {tabItems.map((item, index) => (
             <button
-              key={index}
-              className={`tab-item ${item.active ? "tab-active" : ""}`}
+            key={index}
+            className={`tab-item ${item.active ? "tab-active" : ""}`}
             >
-              {item.icon}
+              <img src={item.icon} alt="" />
+              
               <span className="tab-label">{item.label}</span>
             </button>
           ))}
@@ -151,7 +151,7 @@ const ProfileUI = () => {
                 src="/api/placeholder/150/150"
                 alt={`Grid item ${index + 1}`}
                 className="grid-image"
-              />
+                />
             </div>
           ))}
         </div>
@@ -160,29 +160,24 @@ const ProfileUI = () => {
       {/* Bottom Navigation */}
       <div className="bottom-navigation">
         <button className="nav-button nav-active">
-          <Home className="icon" />
           <span className="nav-label">Home</span>
         </button>
         <button className="nav-button">
-          <Search className="icon" />
           <span className="nav-label">Search</span>
         </button>
         <button className="nav-button center-button">
           <div className="plus-icon">
-            <Plus className="icon" />
           </div>
         </button>
         <button className="nav-button">
-          <Clock className="icon" />
           <span className="nav-label">Shorts</span>
         </button>
         <button className="nav-button">
-          <User className="icon" />
           <span className="nav-label">Profile</span>
         </button>
       </div>
-    </div>
+  </LayoutContainer>
   );
 };
 
-export default ProfileUI;
+export default HomePage;

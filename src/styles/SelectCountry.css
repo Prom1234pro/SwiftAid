@@ -41,25 +41,29 @@
     list-style: none;
     padding: 0;
     margin: 0;
-    max-height: 300px;
-    overflow-y: auto;
+    margin-bottom: 2em;
   }
   
   .country-item {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px;
+    padding: 6px 12px;
     border-bottom: 1px solid #eee;
     cursor: pointer;
+    border-radius: 25px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    gap: 25px;
   }
   
   .country-item:hover {
     background-color: #f9f9f9;
   }
   
-  .flag {
+  .code {
     font-size: 20px;
+    color: rgb(172, 172, 172);
   }
   
   .name {
@@ -70,11 +74,13 @@
   }
   
   .radio {
-    font-size: 20px;
+    font-size: 40px;
+    color: #8bc34a;
   }
   
   .selected {
     background-color: #e6f5d0;
+    border: 2px solid #8bc34a;
   }
   
   .continue-button {

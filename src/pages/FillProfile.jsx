@@ -1,18 +1,14 @@
 import { useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
-import { doc, updateDoc } from "firebase/firestore";
-import { firestore } from "../firebase"; // Ensure correct import path
-import arrowBack from "../assets/arrowBack.png";
+import { useNavigate } from "react-router-dom";
 import edit from "../assets/edit.png";
 import Button from "../components/Button";
 import lightMessage from "../assets/light-message.png";
 import avatar from "../assets/avatar.png";
 import "../styles/FillProfile.css";
+import LayoutContainer from "../components/LayoutContainer";
 
 function FillProfile() {
   const navigate = useNavigate();
-  const location = useLocation();
-  const { userId } = location.state || {}; // Retrieve userId from navigation state
 
   const [profileData, setProfileData] = useState({
     fullName: "",
@@ -52,23 +48,12 @@ function FillProfile() {
     e.preventDefault();
     const avatarUrl = localStorage.getItem("avatarUrl") || profileData.avatarUrl;
 
-    try {
-      const userRef = doc(firestore, "users", userId);
-      await updateDoc(userRef, { ...profileData, avatarUrl });
-      navigate("/home");
-    } catch (error) {
-      console.error("Error updating profile:", error.message);
-    }
+    navigate("/home", { state: { avatarUrl } }); 
+    
   };
 
   return (
-    <div className="profile-container">
-      <div className="back">
-        <div>
-          <img src={arrowBack} alt="arrowBack" />
-        </div>
-        <h1>Fill Your Profile</h1>
-      </div>
+    <LayoutContainer headingText="Fill Your Profile">
 
       <div className="avatar-section">
         <div className="avatar">
@@ -155,7 +140,8 @@ function FillProfile() {
         </div>
         <Button text="Continue" />
       </form>
-    </div>
+    </LayoutContainer>
+
   );
 }
 

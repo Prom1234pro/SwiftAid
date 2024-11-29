@@ -7,7 +7,8 @@ import Button from "../components/Button";
 import facebook from "../assets/facebook.png";
 import google from "../assets/google.png";
 import apple from "../assets/apple.png";
-import hide from "../assets/hide.png";
+import showIcon from "../assets/hide.png"; // Replace with appropriate icon for show password
+import hideIcon from "../assets/hide.png"; // Existing hide icon
 import lock from "../assets/lock.png";
 import arrowBack from "../assets/arrowBack.png";
 import darkMessage from "../assets/dark-message.png";
@@ -16,22 +17,23 @@ function SignIn() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [errorMessage, setErrorMessage] = useState(""); // State for error messages
+  const [showPassword, setShowPassword] = useState(false); // Track password visibility
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleSignIn = async (e) => {
     e.preventDefault();
-    setErrorMessage(""); // Clear previous errors
+    setErrorMessage("");
     try {
       await signInWithEmailAndPassword(auth, email, password);
       navigate("/home");
     } catch (error) {
-      setErrorMessage(error.message); // Set error message
+      setErrorMessage(error.message);
       console.error("Error during sign-in:", error.message);
     }
   };
 
   const handleSocialSignIn = async (provider) => {
-    setErrorMessage(""); // Clear previous errors
+    setErrorMessage("");
     try {
       await signInWithPopup(auth, provider);
       navigate("/home");
@@ -39,21 +41,25 @@ function SignIn() {
       if (error.code === "auth/cancelled-popup-request") {
         console.warn("Popup request was canceled.");
       } else {
-        setErrorMessage(error.message); // Set error message
+        setErrorMessage(error.message);
         console.error("Error during social sign-in:", error.message);
       }
     }
   };
 
+  const togglePasswordVisibility = () => {
+    setShowPassword((prevShowPassword) => !prevShowPassword);
+  };
+
   return (
     <div className="signup-container">
-      <div className="back">
+      <div className="back" onClick={()=>navigate(-1)}>
         <div>
           <img src={arrowBack} alt="arrowBack" />
         </div>
       </div>
       <h1>Login To Your Account</h1>
-      {errorMessage && <p className="error-message">{errorMessage}</p>} {/* Display error message */}
+      {errorMessage && <p className="error-message">{errorMessage}</p>}
       <form className="signup-form" onSubmit={handleSignIn}>
         <div className="signup-input-field-container">
           <div>
@@ -71,13 +77,13 @@ function SignIn() {
             <img src={lock} alt="lock" />
           </div>
           <input
-            type="password"
+            type={showPassword ? "text" : "password"} // Toggle input type
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <div>
-            <img src={hide} alt="hide" />
+          <div onClick={togglePasswordVisibility} style={{ cursor: "pointer" }}>
+            <img src={showPassword ? showIcon : hideIcon} alt="toggle visibility" />
           </div>
         </div>
         <Button text="Login" handleClick={handleSignIn} />
